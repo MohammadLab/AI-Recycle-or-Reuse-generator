@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Recycling Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>♻️ Eco-Friendly Ideas Generator</h1>
+        <p class="subtitle">Get creative recycling suggestions for any item</p>
+        
+        <form method="POST" class="search-form">
+            <input type="text" 
+                   name="object_name" 
+                   placeholder="Enter an item (e.g., plastic bottle, old jeans)"
+                   required>
+            <button type="submit">Get Ideas</button>
+        </form>
+
+        <div class="chat-container">
+            {% if user_input %}
+            <div class="message user-message">
+                <p>How can I reuse a {{ user_input }}?</p>
+            </div>
+            {% endif %}
+
+            {% if response %}
+            <div class="message ai-message">
+                <p>{{ response|safe }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
